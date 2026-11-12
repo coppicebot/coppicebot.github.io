@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coppice: Minecraft server status for Discord</title>
+<meta name="description" content="Coppice checks your Minecraft server every minute and keeps a live status card in your Discord, with calm offline alerts.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="/">Coppice</a>
+  <nav><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a></nav>
+</header>
+<main class="home">
+
+<section class="hero">
+  <p class="eyebrow">A Discord bot for Minecraft servers</p>
+  <h1>Know when your server goes down, before your players tell you.</h1>
+  <p class="lede">Coppice checks your Minecraft server every minute and keeps a live
+  status card in your Discord. When it stops answering twice in a row, your
+  community hears about it once. A single blip never sends an alert.</p>
+  <p class="actions"><a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a></p>
+  <p class="start">Then run <code>/coppice setup play.yourserver.net</code> in the channel you want the card in.</p>
+</section>
+
+<section class="card-demo" aria-label="Example status card">
+  <div class="card">
+    <p class="card-title"><span class="dot"></span>Survival <span class="muted">play.example.net</span></p>
+    <dl>
+      <div><dt>Status</dt><dd>Online for 3 days</dd></div>
+      <div><dt>Players</dt><dd>12 / 40</dd></div>
+      <div><dt>Version</dt><dd>1.21</dd></div>
+      <div><dt>Ping</dt><dd>38 ms</dd></div>
+    </dl>
+    <p class="card-foot">Coppice</p>
+  </div>
+  <p class="caption">An example of the card. It edits itself, so the channel stays clean.</p>
+</section>
+
+<section class="features">
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Live status card.</strong> Online or offline, players, version, ping and uptime, updated in place.</li>
+    <li><strong>Calm alerts.</strong> Two missed checks before an offline alert, with an optional role ping. You hear when it's back, and for how long it was down.</li>
+    <li><strong>Graphs.</strong> Players and ping over time, with outages shaded.</li>
+    <li><strong>Quiet hours.</strong> Alerts wait overnight and arrive as one summary in the morning.</li>
+    <li><strong>Patch notes.</strong> New Minecraft Java versions posted to a channel you pick.</li>
+    <li><strong>Java and Bedrock.</strong> Detected for you.</li>
+  </ul>
+</section>
+
+<section class="plans">
+  <div class="plan">
+    <h3>Free</h3>
+    <ul>
+      <li>Up to 3 servers</li>
+      <li>Checked every 60 seconds</li>
+      <li>24-hour and 7-day graphs</li>
+      <li>Quiet hours and patch notes</li>
+    </ul>
+  </div>
+  <div class="plan">
+    <h3>Premium <span class="muted">$3.99 a month per Discord, coming later</span></h3>
+    <ul>
+      <li>Up to 25 servers</li>
+      <li>30- and 90-day graphs</li>
+      <li>Your own wording on alerts</li>
+      <li>Snapshot versions in patch notes</li>
+    </ul>
+  </div>
+</section>
+
+<section class="notes">
+  <h2>Good to know</h2>
+  <p><strong>Moving from a status bot that shut down?</strong> <code>/monitor</code>,
+  <code>/status</code> and <code>/unmonitor</code> work in Coppice too, with the same option names.</p>
+  <p><strong>What it asks for.</strong> View Channels, Send Messages, Embed Links, Attach
+  Files and Read Message History. No admin rights, no reading messages, no member lists.
+  <a href="/privacy/">What it stores</a>.</p>
+  <p><strong>Help.</strong> <code>/coppice help</code> in Discord, or <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+</section>
+
+</main>
+<footer>
+  <p><a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a></p>
+  <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+</footer>
+</body>
+</html>
