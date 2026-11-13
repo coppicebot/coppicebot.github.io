@@ -3,88 +3,203 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coppice: Minecraft server status for Discord</title>
-<meta name="description" content="Coppice checks your Minecraft server every minute and keeps a live status card in your Discord, with calm offline alerts.">
-<link rel="stylesheet" href="/style.css">
+<title>Coppice: Minecraft server alerts for Discord</title>
+<meta name="description" content="A Discord bot that checks your Minecraft server every minute and posts one alert when it goes down. Free for up to 3 servers.">
+<meta name="theme-color" content="#111511">
+<link rel="preload" href="fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <a class="mark" href="/">Coppice</a>
-  <nav><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a></nav>
+<header class="top wrap">
+  <a class="mark" href="./">Coppice</a>
+  <nav aria-label="Sections"><a href="./#outage">How it works</a><a href="./#pricing">Pricing</a><a href="./#help">Help</a></nav>
+  <a class="small-add" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a>
 </header>
-<main class="home">
+<main>
 
-<section class="hero">
-  <p class="eyebrow">A Discord bot for Minecraft servers</p>
-  <h1>Know when your server goes down, before your players tell you.</h1>
-  <p class="lede">Coppice checks your Minecraft server every minute and keeps a live
-  status card in your Discord. When it stops answering twice in a row, your
-  community hears about it once. A single blip never sends an alert.</p>
-  <p class="actions"><a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a></p>
-  <p class="start">Then run <code>/coppice setup play.yourserver.net</code> in the channel you want the card in.</p>
+<section class="hero wrap">
+  <div>
+    <h1>Know your Minecraft server is down before your players tell you.</h1>
+    <p class="lede">Coppice is a Discord bot that checks your server <strong>every minute</strong>.
+    If the server fails to answer twice in a row, it posts <strong>one alert</strong> and pings the role
+    you pick. Between outages, a status card in your channel shows players, version and ping.</p>
+    <div class="actions">
+      <a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add Coppice to Discord</a>
+      <a class="quiet-link" href="#outage">See how an outage plays out</a>
+    </div>
+    <p class="fineprint">Free for up to 3 servers. Java and Bedrock. Set up with one command, inside Discord.</p>
+  </div>
+  
+<figure class="mock" aria-label="Example: what Coppice posts in a Discord channel">
+<div class="discord">
+  <div class="dc-head"><span class="hash" aria-hidden="true">#</span>server-status<span class="topic">Live status for play.example.net</span></div>
+  <div class="dc-body">
+    <div class="msg">
+      <div class="avatar" aria-hidden="true">c</div>
+      <div>
+        <div class="who"><span class="name">Coppice</span><span class="app">APP</span><time>Today at 9:50 PM</time></div>
+        <div class="embed">
+          <div class="e-title"><span class="st" aria-hidden="true"></span>Survival (play.example.net)</div>
+          <p class="e-desc"><b>Online</b> since 3 days ago<br>Last checked 12 seconds ago</p>
+          <dl class="e-fields">
+            <div><dt>Players</dt><dd>14/40</dd></div>
+            <div><dt>Version</dt><dd>1.21.4</dd></div>
+            <div><dt>Ping</dt><dd>38 ms</dd></div>
+          </dl>
+          <p class="e-foot">Coppice · Minecraft Java · checked every 60 s</p>
+        </div>
+        <span class="edited">(edited)</span>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="avatar" aria-hidden="true">c</div>
+      <div>
+        <div class="who"><span class="name">Coppice</span><span class="app">APP</span><time>Today at 9:51 PM</time></div>
+        <div><span class="mention">@Admins</span></div>
+        <div class="embed offline">
+          <div class="e-title"><span class="st" aria-hidden="true"></span>Survival (play.example.net) is offline</div>
+          <p class="e-desc">Down since 20 seconds ago (9:51 PM).<br>Confirmed by 2 failed checks in a row, so this isn't a blip.</p>
+          <p class="e-foot">Coppice</p>
+        </div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="avatar" aria-hidden="true">c</div>
+      <div>
+        <div class="who"><span class="name">Coppice</span><span class="app">APP</span><time>Today at 10:39 PM</time></div>
+        <div class="embed">
+          <div class="e-title"><span class="st" aria-hidden="true"></span>Survival (play.example.net) is back online</div>
+          <p class="e-desc">It was down for about 48 min.</p>
+          <p class="e-foot">Coppice</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<figcaption class="mock-note">The card updates in place, so the channel doesn't fill up. The server and numbers are examples.</figcaption>
+</figure>
+
 </section>
 
-<section class="card-demo" aria-label="Example status card">
-  <div class="card">
-    <p class="card-title"><span class="dot"></span>Survival <span class="muted">play.example.net</span></p>
-    <dl>
-      <div><dt>Status</dt><dd>Online for 3 days</dd></div>
-      <div><dt>Players</dt><dd>12 / 40</dd></div>
-      <div><dt>Version</dt><dd>1.21</dd></div>
-      <div><dt>Ping</dt><dd>38 ms</dd></div>
+<section class="band" id="outage" aria-labelledby="outage-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="outage-h">What happens when your server goes down</h2>
+      <p class="section-lede">One missed check can be a blip, so Coppice checks again before it says
+      anything. Here is the example outage, check by check.</p>
+    </div>
+    <div>
+      <ol class="timeline">
+        <li><span class="t">9:50:00 PM</span><span class="what">Check. The server answers.</span><span class="why">The card shows 14 players and 38 ms.</span></li>
+        <li><span class="t">9:51:00 PM</span><span class="what">Check. No answer.</span><span class="why">Nothing is posted yet. One miss on its own never alerts.</span></li>
+        <li class="key"><span class="t">9:51:20 PM</span><span class="what">Second check, 20 seconds later. Still no answer.</span><span class="why">That's two in a row. The alert goes to your alert channel, your role is pinged if you picked one, and the card turns to Offline.</span></li>
+        <li><span class="t">9:52 to 10:38 PM</span><span class="what">Checked every minute while it's down.</span><span class="why">One alert is enough. The card keeps count of how long it's been down.</span></li>
+        <li class="key"><span class="t">10:39:00 PM</span><span class="what">The server answers again.</span><span class="why">You get a back-online message with how long it was down, and the card turns green.</span></li>
+      </ol>
+      <p class="note">These times show how the checks are spaced. How fast an alert reaches you also
+      depends on your server's network and on Discord.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="setup" aria-labelledby="setup-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="setup-h">Set up in one command</h2>
+      <p class="section-lede">Everything happens in Discord. There's no dashboard and no account to make.</p>
+    </div>
+    <div>
+      <ol class="steps">
+        <li><h3>Add Coppice to your Discord</h3><p>Pick your Discord on <a href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Discord's add page</a>. You need the Manage Server permission.</p></li>
+        <li><h3>Run setup in the channel you want the card in</h3>
+          <p>Use your server's address. Coppice works out whether it's Java or Bedrock.</p>
+          <div class="cmd"><code id="cmd">/coppice setup play.yourserver.net</code><button type="button" data-copy="cmd">Copy</button></div></li>
+        <li><h3>The card appears</h3><p>Alerts go to the same channel unless you pick another.
+          <code>/coppice settings</code> lists every setting and the command that changes it.</p></li>
+      </ol>
+      <div class="perm">
+        <h3>Permissions it asks for</h3>
+        <p>View Channels, Send Messages, Embed Links, Attach Files and Read Message History: enough to
+        post and update its own messages. It doesn't have Discord's Message Content permission or admin
+        rights. <a href="privacy/">What it stores</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="more" aria-labelledby="more-h">
+  <div class="wrap">
+    <h2 id="more-h">Graphs, quiet hours and the rest</h2>
+    <p class="section-lede">All optional. The card and the alerts work without any of it.</p>
+    <figure class="figure">
+      <img src="img/graph-7d.png" width="1100" height="550" loading="lazy"
+        alt="A Coppice graph of one week: players rise and fall each day, ping stays near 38 ms, and one 48-minute outage is shaded red. 99.50 percent uptime.">
+      <figcaption><code>/coppice graph</code>, drawn by Coppice's own code from a week of example data. Outages are shaded.</figcaption>
+    </figure>
+    <dl class="facts">
+      <div><dt>Graphs</dt><dd>Players, ping and uptime for the last 24 hours or 7 days, with peak and average players and an outage count.</dd></div>
+      <div><dt>Quiet hours</dt><dd>Alerts wait overnight in your time zone and arrive as one summary when the window ends. The card keeps updating.</dd></div>
+      <div><dt>Patch notes</dt><dd>Each new Minecraft Java release, posted to a channel you pick.</dd></div>
+      <div><dt>Nicknames</dt><dd>Call it Survival instead of play.example.net, on the card, alerts and lists.</dd></div>
+      <div><dt>When the alert channel is gone</dt><dd>If someone deletes or locks it, alerts post next to the card instead, and <code>/coppice settings</code> says what to fix.</dd></div>
+      <div><dt>Moving from a bot that shut down?</dt><dd><code>/monitor</code>, <code>/status</code> and <code>/unmonitor</code> work here too, with the same option names.</dd></div>
     </dl>
-    <p class="card-foot">Coppice</p>
-  </div>
-  <p class="caption">An example of the card. It edits itself, so the channel stays clean.</p>
-</section>
-
-<section class="features">
-  <h2>What it does</h2>
-  <ul>
-    <li><strong>Live status card.</strong> Online or offline, players, version, ping and uptime, updated in place.</li>
-    <li><strong>Calm alerts.</strong> Two missed checks before an offline alert, with an optional role ping. You hear when it's back, and for how long it was down.</li>
-    <li><strong>Graphs.</strong> Players and ping over time, with outages shaded.</li>
-    <li><strong>Quiet hours.</strong> Alerts wait overnight and arrive as one summary in the morning.</li>
-    <li><strong>Patch notes.</strong> New Minecraft Java versions posted to a channel you pick.</li>
-    <li><strong>Java and Bedrock.</strong> Detected for you.</li>
-  </ul>
-</section>
-
-<section class="plans">
-  <div class="plan">
-    <h3>Free</h3>
-    <ul>
-      <li>Up to 3 servers</li>
-      <li>Checked every 60 seconds</li>
-      <li>24-hour and 7-day graphs</li>
-      <li>Quiet hours and patch notes</li>
-    </ul>
-  </div>
-  <div class="plan">
-    <h3>Premium <span class="muted">$3.99 a month per Discord, coming later</span></h3>
-    <ul>
-      <li>Up to 25 servers</li>
-      <li>30- and 90-day graphs</li>
-      <li>Your own wording on alerts</li>
-      <li>Snapshot versions in patch notes</li>
-    </ul>
   </div>
 </section>
 
-<section class="notes">
-  <h2>Good to know</h2>
-  <p><strong>Moving from a status bot that shut down?</strong> <code>/monitor</code>,
-  <code>/status</code> and <code>/unmonitor</code> work in Coppice too, with the same option names.</p>
-  <p><strong>What it asks for.</strong> View Channels, Send Messages, Embed Links, Attach
-  Files and Read Message History. No admin rights, no reading messages, no member lists.
-  <a href="/privacy/">What it stores</a>.</p>
-  <p><strong>Help.</strong> <code>/coppice help</code> in Discord, or <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+<section class="band" id="pricing" aria-labelledby="pricing-h">
+  <div class="wrap">
+    <h2 id="pricing-h">The same checks and alerts on both plans</h2>
+    <div class="price-head">
+      <p class="price">$0 <span>for up to 3 servers</span></p>
+      <p class="price">$3.99 <span>a month per Discord for Premium. Sold through Discord, starting after launch.</span></p>
+    </div>
+    <table class="plans">
+      <thead><tr><th scope="col"><span class="visually-hidden">Feature</span></th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Servers</th><td>3</td><td>25</td></tr>
+        <tr><th scope="row">Checks and alerts</th><td>Every 60 s</td><td>Every 60 s</td></tr>
+        <tr><th scope="row">Graphs</th><td>24 hours, 7 days</td><td>Up to 90 days</td></tr>
+        <tr><th scope="row">Quiet hours</th><td>Yes</td><td>Yes</td></tr>
+        <tr><th scope="row">Patch notes</th><td>1 channel</td><td>5 channels, plus snapshots</td></tr>
+        <tr><th scope="row">Your own alert wording</th><td class="no">No</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Premium adds room and history. If it
+    lapses, nothing is deleted: servers over the free limit pause until it's back. Refer another
+    community, and once they've used Coppice for 14 days you both get 30 days of Premium.</p>
+    <div class="actions"><a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add Coppice to Discord</a></div>
+  </div>
+</section>
+
+<section class="band" id="help" aria-labelledby="help-h">
+  <div class="wrap split">
+    <div><h2 id="help-h">Before you add it</h2></div>
+    <dl class="qa">
+      <div><dt>Can it be wrong?</dt><dd>Yes. If the network between Coppice and your server has trouble, or Discord is down,
+        an alert can be late, missed or false. The second check is there to stop one-off false alarms. Don't rely on it alone for anything critical.</dd></div>
+      <div><dt>What does it see?</dt><dd>What any player sees on the multiplayer screen: online or not, player count, version,
+        message of the day and ping. Player names only if your server shares them.</dd></div>
+      <div><dt>Where do I get help?</dt><dd>Run <code>/coppice help</code> in Discord, or email <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</dd></div>
+    </dl>
+  </div>
 </section>
 
 </main>
-<footer>
-  <p><a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a></p>
+<footer class="wrap">
+  <p><a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="terms/">Terms</a> · <a href="privacy/">Privacy</a></p>
+  <p>Run by Matt H., Georgia, USA.</p>
   <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
 </footer>
+<script>
+for (const b of document.querySelectorAll("[data-copy]")) {
+  b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent); b.textContent = "Copied"; }
+    catch (e) { b.textContent = "Select and copy"; }
+    setTimeout(() => { b.textContent = "Copy"; }, 2000);
+  });
+}
+</script>
 </body>
 </html>
