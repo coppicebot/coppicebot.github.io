@@ -6,6 +6,7 @@
 <title>Coppice Privacy Policy</title>
 <meta name="description" content="Coppice Privacy Policy.">
 <meta name="theme-color" content="#111511">
+<link rel="icon" href="../favicon.png" type="image/png">
 <link rel="preload" href="../fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../style.css">
@@ -13,46 +14,53 @@
 <body>
 <header class="top wrap">
   <a class="mark" href="../">Coppice</a>
-  <nav aria-label="Sections"><a href="../#outage">How it works</a><a href="../#pricing">Pricing</a><a href="../#help">Help</a></nav>
+  <nav aria-label="Sections"><a href="../#outage">How it works</a><a href="../#pricing">Pricing</a><a href="../commands/">Commands</a><a href="../#help">Help</a></nav>
   <a class="small-add" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a>
 </header>
 <main>
 <article class="legal wrap">
 <h1>Coppice Privacy Policy</h1>
-<p>Last updated: November 13, 2026</p>
-<p>Coppice is a Discord bot that watches Minecraft servers. It is run by
-Matt H., Georgia, USA ("we"). Questions:
-support@coppicebot.com.</p>
+<p>Last updated: November 25, 2026</p>
+
+<p>Coppice is a Discord bot that watches Minecraft servers. Coppice ("we") is
+run from Georgia, USA, and is responsible for the data described here. Questions
+and requests: <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
 <p>This page says what Coppice stores, why, and for how long. The short version:
 Coppice stores your Discord's settings and the Minecraft servers you ask it to
 watch. It doesn't read messages, doesn't keep a list of your members, and
 doesn't sell anything to anyone.</p>
 <h2>What Coppice stores</h2>
-<p><strong>About your Discord server</strong>
-- Its Discord server ID.
-- Your settings: the alert channel and alert role (as IDs), quiet hours and
-  time zone, custom alert wording, server nicknames, your default server, and
-  patch-note channels (as IDs).
-- Plan details: whether you have Premium and until when, any free months
-  earned, your referral code, and which Discord referred which (as server IDs).
-- When Coppice was added, when it was removed, and whether an alert recently
-  failed to post.</p>
-<p><strong>About each Minecraft server you add</strong>
-- The address you typed and whether it's Java or Bedrock.
-- The channel and message ID of its status card, and its nickname if you set
-  one.
-- Its latest status: online or not, player count, version, message of the day,
+<h3>About your Discord server</h3>
+<ul>
+<li>Its Discord server ID.</li>
+<li>Your settings: the alert channel and alert role (as IDs), quiet hours and
+  time zone, custom alert wording, server nicknames, card color, your default
+  server, and patch-note channels (as IDs).</li>
+<li>Plan details: whether you have Premium and until when, any free Premium days
+  earned, your referral code, and which Discord referred which (as server IDs).</li>
+<li>When Coppice was added, when it was removed, and whether an alert recently
+  failed to post.</li>
+</ul>
+<h3>About each Minecraft server you add</h3>
+<ul>
+<li>The address you typed and whether it's Java or Bedrock.</li>
+<li>The channel and message ID of its status card, and its nickname if you set
+  one.</li>
+
+<li>Its latest status: online or not, player count, version, message of the day,
   ping, and the sample of player names the Minecraft server itself publishes
   in the multiplayer server list (at most about 12 names, and only if that
-  server shares them). This is replaced on every check, about once a minute.
-  It is not kept as history.
-- History for graphs: one sample every 5 minutes with online or not, player
-  count and ping. No player names.
-- During quiet hours: the alerts waiting for the morning summary. They are
-  deleted once the summary posts.</p>
-<p><strong>Premium through Discord.</strong> When you subscribe in Discord, Discord tells
-Coppice that your Discord has an active subscription and until when. Discord
-handles the payment. We never see card details or your billing address.</p>
+  server shares them). This is replaced on every check. It is not kept as
+  history.</li>
+<li>History for graphs: one sample every 5 minutes with online or not, player
+  count and ping. No player names.</li>
+<li>During quiet hours: the alerts waiting for the morning summary. They are
+  deleted once the summary posts.</li>
+</ul>
+<h3>Premium through Discord</h3>
+<p>When you subscribe in Discord, Discord tells Coppice that your Discord has an
+active subscription and until when. Discord handles the payment. We never see
+card details or your billing address.</p>
 <h2>What Coppice does not store</h2>
 <ul>
 <li>Message content. Coppice runs on slash commands and doesn't have Discord's
@@ -76,7 +84,7 @@ patch notes, and apply your plan. No advertising, no profiling, no selling.</p>
 <tbody>
 <tr>
 <td>History samples</td>
-<td>8 days on Free, 91 days on Premium, then deleted (checked hourly)</td>
+<td>31 days on Free, 91 days on Premium, then deleted (checked hourly). If Premium ends, samples older than 31 days are deleted at the next hourly check.</td>
 </tr>
 <tr>
 <td>Latest status and player-name sample</td>
@@ -114,16 +122,33 @@ patch notes, and apply your plan. No advertising, no profiling, no selling.</p>
   in its New York (NYC3) data center in the United States.</li>
 <li><strong>Discord</strong>, because Coppice runs on Discord. Discord's own privacy policy
   covers what Discord does.</li>
+<li><strong>Our email providers, Zoho and Google,</strong> carry and store email you send to
+  support@coppicebot.com.</li>
+<li><strong>Anthropic</strong>, whose AI tools may read support email and error logs when we
+  answer you or fix a problem (see <a href="#ai">How AI is used</a>).</li>
 <li>Nobody else, unless the law requires it.</li>
 </ul>
 <p>Coppice also reads Mojang's public list of Minecraft versions for patch notes.
 It sends nothing about you to do that.</p>
+<h2 id="ai">How AI is used</h2>
+<p>Coppice is built and run with AI assistance. Its code, this website and many
+support replies are written with AI tools (currently Anthropic's Claude). A
+person owns Coppice and is accountable for it.</p>
+<ul>
+<li>The bot itself uses no AI. Checks, status cards, alerts and graphs are
+  ordinary code.</li>
+<li>Email you send to support@coppicebot.com, and the bot's error logs, may be
+  read by these AI tools to answer you or fix a problem. Nothing about your
+  Discord is sent to an AI tool otherwise.</li>
+<li>No AI poses as a person. Replies come from Coppice, not from a named
+  individual.</li>
+</ul>
 <h2>Your choices</h2>
 <ul>
 <li>Remove a server any time with <code>/coppice remove</code>.</li>
 <li>Remove Coppice from your Discord to delete your servers and history at once.</li>
 <li>To delete everything now, including your settings and plan, email
-  support@coppicebot.com with your Discord server ID. You'll be asked to show
+  <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> with your Discord server ID. You'll be asked to show
   you manage that Discord, then it's deleted within 30 days. Premium time is lost
   when its record is deleted.</li>
 <li>To see what Coppice stores about your Discord, <code>/coppice settings</code> shows it,
@@ -145,13 +170,16 @@ may log visitors' IP addresses to keep its service secure; GitHub's privacy
 statement covers that.</p>
 <h2>Changes</h2>
 <p>If this policy changes, the new version goes on this page with a new date. For
-a change that stores more about you, we'll post it in Coppice's patch notes
-channel first.</p>
+a change that stores more about you, we'll post it in the
+<a href="https://discord.gg/HShS7neASg">Coppice Support server</a> and on this page
+before it takes effect.</p>
 </article>
 </main>
 <footer class="wrap">
-  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="../terms/">Terms</a> · <a href="../privacy/">Privacy</a></p>
-  <p>Run by Matt H., Georgia, USA.</p>
+  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="../commands/">Commands</a> · <a href="../status/">Status</a> · <a href="../terms/">Terms</a> · <a href="../privacy/">Privacy</a></p>
+
+  <p>Coppice is run from Georgia, USA. Contact: <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+  <p>Built and run with AI assistance. A person owns Coppice and is accountable for it. <a href="../privacy/#ai">How AI is used</a>.</p>
   <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
 </footer>
 </body>

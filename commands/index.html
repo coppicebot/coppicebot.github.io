@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coppice commands</title>
+<meta name="description" content="Every Coppice command: setup, alerts, graphs, quiet hours, patch notes, and the old MCStatusBot command names that still work.">
+<meta name="theme-color" content="#111511">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="preload" href="../fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top wrap">
+  <a class="mark" href="../">Coppice</a>
+  <nav aria-label="Sections"><a href="../#outage">How it works</a><a href="../#pricing">Pricing</a><a href="./">Commands</a><a href="../#help">Help</a></nav>
+  <a class="small-add" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a>
+</header>
+<main>
+<article class="legal wide wrap">
+<h1>Coppice commands</h1>
+<p>Type <code>/</code> in Discord and pick Coppice to see these with hints. Everything
+is under <code>/coppice</code>. Commands marked <em>Manage Server</em> change settings, so
+only people with that Discord permission see them by default. Replies to setup and settings
+are only shown to you.</p>
+
+<h2>Start</h2>
+<table class="cmds">
+<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead>
+<tbody>
+<tr><td><code>/coppice setup &lt;address&gt;</code></td><td>Posts a live status card in this channel and alerts when the server goes offline. Optional: <code>edition</code>, <code>alert_channel</code>, <code>alert_role</code>, <code>nickname</code>.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice status &lt;address&gt;</code></td><td>Checks any server once. Watches nothing.</td><td>Anyone</td></tr>
+<tr><td><code>/coppice help</code></td><td>How Coppice works and how to start.</td><td>Anyone</td></tr>
+<tr><td><code>/coppice settings</code></td><td>Every setting here, its current value and the command that changes it.</td><td>Anyone</td></tr>
+</tbody>
+</table>
+
+<h2>Servers and alerts</h2>
+<table class="cmds">
+<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead>
+<tbody>
+<tr><td><code>/coppice list</code></td><td>The servers this Discord watches.</td><td>Anyone</td></tr>
+<tr><td><code>/coppice remove &lt;server&gt;</code></td><td>Stops watching a server and deletes its card and history.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice alerts &lt;channel&gt; [role]</code></td><td>Where offline and back-online alerts go, and which role is pinged. Leave the role empty for no ping.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice nickname [name] [server]</code></td><td>A short name for the card and alerts, up to 32 characters. Empty removes it.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice default &lt;server&gt;</code></td><td>The server commands use when you don't name one.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice cardcolor [color]</code></td><td>The color of this Discord's status cards: a name like blue or gold, or a hex code. Offline cards stay red. <code>reset:True</code> goes back to green.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice quiethours &lt;start&gt; &lt;end&gt; &lt;timezone&gt;</code></td><td>Holds alerts overnight and posts one summary when the window ends. Example: <code>23:00 07:00 America/New_York</code>.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice quiethours-off</code></td><td>Sends alerts right away again.</td><td>Manage Server</td></tr>
+</tbody>
+</table>
+
+<h2>Graphs and patch notes</h2>
+<table class="cmds">
+<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead>
+<tbody>
+<tr><td><code>/coppice graph &lt;server&gt; [period]</code></td><td>Players, ping and uptime: last 24 hours, 7 days or 30 days. 90 days with Premium.</td><td>Anyone</td></tr>
+<tr><td><code>/coppice patchnotes &lt;channel&gt;</code></td><td>Posts each new Minecraft Java version there. <code>snapshots:True</code> adds snapshots and pre-releases (Premium).</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice patchnotes-off [channel]</code></td><td>Stops patch notes in one channel, or everywhere if empty.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice host</code></td><td>What to check before paying for a Minecraft host.</td><td>Anyone</td></tr>
+</tbody>
+</table>
+
+<h2>Premium and referrals</h2>
+<table class="cmds">
+<thead><tr><th>Command</th><th>What it does</th><th>Who</th></tr></thead>
+<tbody>
+<tr><td><code>/coppice premium</code></td><td>What Premium adds, and this Discord's referral code.</td><td>Anyone</td></tr>
+<tr><td><code>/coppice redeem &lt;code&gt;</code></td><td>Uses another community's referral code. Works within 14 days of adding Coppice. <a href="../terms/#referrals">Rules</a>.</td><td>Manage Server</td></tr>
+<tr><td><code>/coppice alerttext [offline] [online]</code></td><td>Premium: your own words on alerts. <code>{server}</code> and <code>{downtime}</code> are filled in. <code>reset:True</code> goes back to the default.</td><td>Manage Server</td></tr>
+</tbody>
+</table>
+<p>Premium is not on sale yet. <a href="../#pricing">Plans</a>.</p>
+
+<h2 id="carry-over">Coming from MCStatusBot</h2>
+<p>These names answer in Coppice too, with the option names MCStatusBot's own code
+used. You get a status card and alerts, not renamed voice channels. Old settings
+can't be imported: that bot's maintainer said no data is handed over.</p>
+<table class="cmds">
+<thead><tr><th>Old command</th><th>In Coppice</th></tr></thead>
+<tbody>
+<tr><td><code>/monitor ip</code></td><td>Starts watching, with a status card and offline alerts. <code>nickname</code>, <code>default</code> and <code>platform</code> work as before; an empty platform is worked out, not assumed Java. <code>online</code> and <code>offline</code> are accepted but not used: the card says Online or Offline itself.</td></tr>
+<tr><td><code>/status [server] [platform]</code></td><td>Status and who's online, for the default server or any address.</td></tr>
+<tr><td><code>/nickname nickname [server]</code></td><td>Renames a watched server.</td></tr>
+<tr><td><code>/default [server]</code></td><td>Sets the default server, or shows it if empty.</td></tr>
+<tr><td><code>/unmonitor [server]</code></td><td>Stops watching a server, or every server with <code>server:all</code>.</td></tr>
+<tr><td><code>/help</code></td><td>Coppice's help.</td></tr>
+<tr><td><code>/indicators</code>, <code>/ephemeral</code></td><td>Explain the Coppice way: there are no voice channels to rename, and which replies are private is fixed.</td></tr>
+<tr><td><code>/bug</code></td><td>Points to the Coppice Support server.</td></tr>
+</tbody>
+</table>
+</article>
+</main>
+<footer class="wrap">
+  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="../commands/">Commands</a> · <a href="../status/">Status</a> · <a href="../terms/">Terms</a> · <a href="../privacy/">Privacy</a></p>
+
+  <p>Coppice is run from Georgia, USA. Contact: <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+  <p>Built and run with AI assistance. A person owns Coppice and is accountable for it. <a href="../privacy/#ai">How AI is used</a>.</p>
+  <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+</footer>
+</body>
+</html>

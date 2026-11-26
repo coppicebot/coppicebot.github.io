@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coppice: Minecraft server alerts for Discord</title>
-<meta name="description" content="A Discord bot that checks your Minecraft server every minute and posts one alert when it goes down. Free for up to 3 servers.">
+
+<meta name="description" content="A Discord bot that keeps checking your Minecraft server and posts one alert when it goes down. Free for up to 10 servers per Discord.">
 <meta name="theme-color" content="#111511">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Coppice">
+<meta property="og:title" content="Coppice: Minecraft server alerts for Discord">
+<meta property="og:description" content="A live status card and one alert when your Minecraft server goes down. Free for up to 10 servers per Discord.">
+<meta property="og:url" content="https://coppicebot.com/">
+<meta property="og:image" content="https://coppicebot.com/img/coppice-icon-512.png">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
@@ -13,7 +22,7 @@
 <body>
 <header class="top wrap">
   <a class="mark" href="./">Coppice</a>
-  <nav aria-label="Sections"><a href="./#outage">How it works</a><a href="./#pricing">Pricing</a><a href="./#help">Help</a></nav>
+  <nav aria-label="Sections"><a href="./#outage">How it works</a><a href="./#pricing">Pricing</a><a href="commands/">Commands</a><a href="./#help">Help</a></nav>
   <a class="small-add" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a>
 </header>
 <main>
@@ -21,16 +30,18 @@
 <section class="hero wrap">
   <div>
     <h1>Know your Minecraft server is down before your players tell you.</h1>
-    <p class="lede">Coppice is a Discord bot that checks your server <strong>every minute</strong>.
+
+    <p class="lede">Coppice is a Discord bot that <strong>keeps checking your server</strong>.
     If the server fails to answer twice in a row, it posts <strong>one alert</strong> and pings the role
     you pick. Between outages, a status card in your channel shows players, version and ping.</p>
+    <p class="offer">Free for up to 10 Minecraft servers per Discord. Java and Bedrock.</p>
     <div class="actions">
       <a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add Coppice to Discord</a>
       <a class="quiet-link" href="#outage">See how an outage plays out</a>
     </div>
-    <p class="fineprint">Free for up to 3 servers. Java and Bedrock. Set up with one command, inside Discord.</p>
+    <p class="fineprint">Set up with one command, inside Discord. No account, no dashboard.</p>
   </div>
-  
+
 <figure class="mock" aria-label="Example: what Coppice posts in a Discord channel">
 <div class="discord">
   <div class="dc-head"><span class="hash" aria-hidden="true">#</span>server-status<span class="topic">Live status for play.example.net</span></div>
@@ -41,13 +52,14 @@
         <div class="who"><span class="name">Coppice</span><span class="app">APP</span><time>Today at 9:50 PM</time></div>
         <div class="embed">
           <div class="e-title"><span class="st" aria-hidden="true"></span>Survival (play.example.net)</div>
-          <p class="e-desc"><b>Online</b> since 3 days ago<br>Last checked 12 seconds ago</p>
+          <p class="e-desc"><b>Online</b> since 3 days ago<br>Status as of 12 seconds ago</p>
           <dl class="e-fields">
             <div><dt>Players</dt><dd>14/40</dd></div>
             <div><dt>Version</dt><dd>1.21.4</dd></div>
             <div><dt>Ping</dt><dd>38 ms</dd></div>
           </dl>
-          <p class="e-foot">Coppice · Minecraft Java · checked every 60 s</p>
+
+          <p class="e-foot">Coppice · Minecraft Java</p>
         </div>
         <span class="edited">(edited)</span>
       </div>
@@ -77,7 +89,7 @@
     </div>
   </div>
 </div>
-<figcaption class="mock-note">The card updates in place, so the channel doesn't fill up. The server and numbers are examples.</figcaption>
+<figcaption class="mock-note">The card updates in place, so the channel doesn't fill up, and says how fresh its status is. The server and numbers are examples.</figcaption>
 </figure>
 
 </section>
@@ -90,15 +102,16 @@
       anything. Here is the example outage, check by check.</p>
     </div>
     <div>
+
       <ol class="timeline">
-        <li><span class="t">9:50:00 PM</span><span class="what">Check. The server answers.</span><span class="why">The card shows 14 players and 38 ms.</span></li>
-        <li><span class="t">9:51:00 PM</span><span class="what">Check. No answer.</span><span class="why">Nothing is posted yet. One miss on its own never alerts.</span></li>
-        <li class="key"><span class="t">9:51:20 PM</span><span class="what">Second check, 20 seconds later. Still no answer.</span><span class="why">That's two in a row. The alert goes to your alert channel, your role is pinged if you picked one, and the card turns to Offline.</span></li>
-        <li><span class="t">9:52 to 10:38 PM</span><span class="what">Checked every minute while it's down.</span><span class="why">One alert is enough. The card keeps count of how long it's been down.</span></li>
-        <li class="key"><span class="t">10:39:00 PM</span><span class="what">The server answers again.</span><span class="why">You get a back-online message with how long it was down, and the card turns green.</span></li>
+        <li><span class="t">Check</span><span class="what">The server answers.</span><span class="why">The card shows 14 players and 38 ms.</span></li>
+        <li><span class="t">Next check</span><span class="what">No answer.</span><span class="why">Nothing is posted yet. One miss on its own never alerts.</span></li>
+        <li class="key"><span class="t">Re-check, soon after</span><span class="what">Still no answer.</span><span class="why">That's two in a row. The alert goes to your alert channel, your role is pinged if you picked one, and the card turns to Offline.</span></li>
+        <li><span class="t">While it's down</span><span class="what">Checks carry on.</span><span class="why">One alert is enough. The card keeps count of how long it's been down.</span></li>
+        <li class="key"><span class="t">Back up</span><span class="what">The server answers again.</span><span class="why">You get a back-online message with how long it was down, and the card turns green.</span></li>
       </ol>
-      <p class="note">These times show how the checks are spaced. How fast an alert reaches you also
-      depends on your server's network and on Discord.</p>
+      <p class="note">This is the order things happen in. Every card says when its status is from.
+      How fast an alert reaches you also depends on your server's network and on Discord.</p>
     </div>
   </div>
 </section>
@@ -113,16 +126,39 @@
       <ol class="steps">
         <li><h3>Add Coppice to your Discord</h3><p>Pick your Discord on <a href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Discord's add page</a>. You need the Manage Server permission.</p></li>
         <li><h3>Run setup in the channel you want the card in</h3>
-          <p>Use your server's address. Coppice works out whether it's Java or Bedrock.</p>
+          <p>Type <code>/</code>, pick Coppice from the list, then <code>setup</code>, and give your server's address.
+          Or paste the line below. Coppice works out whether it's Java or Bedrock.</p>
           <div class="cmd"><code id="cmd">/coppice setup play.yourserver.net</code><button type="button" data-copy="cmd">Copy</button></div></li>
         <li><h3>The card appears</h3><p>Alerts go to the same channel unless you pick another.
-          <code>/coppice settings</code> lists every setting and the command that changes it.</p></li>
+          <code>/coppice settings</code> lists every setting and the command that changes it.
+          <a href="commands/">All commands</a>.</p></li>
       </ol>
+      <div class="perm" id="works">
+        <h3>Will it work with my server?</h3>
+        <p>If players join it by typing an address, Coppice can check it: Java or Bedrock, any host,
+        or your own PC if it's reachable from the internet. Try it first with
+        <code>/coppice status</code> and the address: it checks once and watches nothing.</p>
+        <ul class="plain">
+          <li><strong>The address</strong> is what players type under Multiplayer, Add Server (Java) or Servers, Add Server (Bedrock), like <code>play.example.net</code> or <code>1.2.3.4:25565</code>. Your host's control panel shows it too.</li>
+          <li><strong>Realms</strong> can't be checked. A Realm has no public address.</li>
+          <li><strong>Hosts that sleep an empty server</strong> (common on free plans) answer however they answer players, which may read as offline. Coppice reports what it sees.</li>
+        </ul>
+      </div>
       <div class="perm">
         <h3>Permissions it asks for</h3>
         <p>View Channels, Send Messages, Embed Links, Attach Files and Read Message History: enough to
         post and update its own messages. It doesn't have Discord's Message Content permission or admin
         rights. <a href="privacy/">What it stores</a>.</p>
+        <p>It doesn't ask for Mention Everyone either, so it can only ping a role that anyone may mention.
+        If your alert role isn't pinged, open Server Settings, Roles, pick the role and turn on
+        "Allow anyone to @mention this role". Coppice says so when you pick a role that needs it.</p>
+      </div>
+      <div class="perm">
+        <h3>Coming from MCStatusBot?</h3>
+        <p><code>/monitor</code>, <code>/status</code>, <code>/nickname</code>, <code>/default</code> and
+        <code>/unmonitor</code> work here, with the option names that bot used. What you get is different:
+        a status card and alerts instead of renamed voice channels. MCStatusBot was set to stop on
+        09/01/2026. <a href="commands/#carry-over">What carries over</a>.</p>
       </div>
     </div>
   </div>
@@ -132,43 +168,55 @@
   <div class="wrap">
     <h2 id="more-h">Graphs, quiet hours and the rest</h2>
     <p class="section-lede">All optional. The card and the alerts work without any of it.</p>
-    <figure class="figure">
-      <img src="img/graph-7d.png" width="1100" height="550" loading="lazy"
-        alt="A Coppice graph of one week: players rise and fall each day, ping stays near 38 ms, and one 48-minute outage is shaded red. 99.50 percent uptime.">
-      <figcaption><code>/coppice graph</code>, drawn by Coppice's own code from a week of example data. Outages are shaded.</figcaption>
-    </figure>
+    <div class="figs">
+      <figure class="figure">
+        <img src="img/graph-7d.png" width="1100" height="550" loading="lazy"
+          alt="A Coppice graph of one week: players rise and fall each day, ping stays near 38 ms, and one 48-minute outage is shaded red. 99.50 percent uptime.">
+        <figcaption><code>/coppice graph</code>, drawn by Coppice's own code from a week of example data. Outages are shaded.</figcaption>
+      </figure>
+      <figure class="figure shot">
+        <img src="img/real-graph-2026-11-14.png" width="555" height="485" loading="lazy"
+          alt="A screenshot from Discord: Coppice's reply to /coppice graph for a public server over 10 hours, 100 percent uptime, peak 1,421 players, average ping 19 ms.">
+        <figcaption>A real reply, screenshotted in Coppice's test Discord on 11/14/2026, watching a large public server.</figcaption>
+      </figure>
+    </div>
     <dl class="facts">
-      <div><dt>Graphs</dt><dd>Players, ping and uptime for the last 24 hours or 7 days, with peak and average players and an outage count.</dd></div>
+      <div><dt>Graphs</dt><dd>Players, ping and uptime for the last 24 hours, 7 days or 30 days, with peak and average players and an outage count.</dd></div>
       <div><dt>Quiet hours</dt><dd>Alerts wait overnight in your time zone and arrive as one summary when the window ends. The card keeps updating.</dd></div>
       <div><dt>Patch notes</dt><dd>Each new Minecraft Java release, posted to a channel you pick.</dd></div>
-      <div><dt>Nicknames</dt><dd>Call it Survival instead of play.example.net, on the card, alerts and lists.</dd></div>
+      <div><dt>Nicknames and card color</dt><dd>Call it Survival instead of play.example.net, on the card, alerts and lists. Pick the card's color.</dd></div>
       <div><dt>When the alert channel is gone</dt><dd>If someone deletes or locks it, alerts post next to the card instead, and <code>/coppice settings</code> says what to fix.</dd></div>
-      <div><dt>Moving from a bot that shut down?</dt><dd><code>/monitor</code>, <code>/status</code> and <code>/unmonitor</code> work here too, with the same option names.</dd></div>
+      <div><dt>Every command</dt><dd>On the <a href="commands/">commands page</a>, or run <code>/coppice help</code> in Discord.</dd></div>
     </dl>
   </div>
 </section>
 
 <section class="band" id="pricing" aria-labelledby="pricing-h">
   <div class="wrap">
-    <h2 id="pricing-h">The same checks and alerts on both plans</h2>
+    <h2 id="pricing-h">Every check and alert is free. Premium adds room and history.</h2>
     <div class="price-head">
-      <p class="price">$0 <span>for up to 3 servers</span></p>
-      <p class="price">$3.99 <span>a month per Discord for Premium. Sold through Discord, starting after launch.</span></p>
+      <p class="price">$0 <span>for up to 10 servers per Discord</span></p>
+      <p class="price">$4.99 <span>a month per Discord for Premium. Not on sale yet.</span></p>
     </div>
     <table class="plans">
       <thead><tr><th scope="col"><span class="visually-hidden">Feature</span></th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Servers</th><td>3</td><td>25</td></tr>
-        <tr><th scope="row">Checks and alerts</th><td>Every 60 s</td><td>Every 60 s</td></tr>
-        <tr><th scope="row">Graphs</th><td>24 hours, 7 days</td><td>Up to 90 days</td></tr>
+        <tr><th scope="row">Servers</th><td>10</td><td>25</td></tr>
+
+        <tr><th scope="row">Checks and alerts</th><td>Included</td><td>The same as Free</td></tr>
+        <tr><th scope="row">Graphs</th><td>24 hours, 7 days, 30 days</td><td>Adds 90 days</td></tr>
         <tr><th scope="row">Quiet hours</th><td>Yes</td><td>Yes</td></tr>
         <tr><th scope="row">Patch notes</th><td>1 channel</td><td>5 channels, plus snapshots</td></tr>
         <tr><th scope="row">Your own alert wording</th><td class="no">No</td><td>Yes</td></tr>
       </tbody>
     </table>
-    <p class="note">Premium adds room and history. If it
-    lapses, nothing is deleted: servers over the free limit pause until it's back. Refer another
-    community, and once they've used Coppice for 14 days you both get 30 days of Premium.</p>
+    <p class="note"><strong>If Premium ends,</strong> servers over the free limit pause (newest first) and
+    start again when Premium is back. Graph history older than 31 days is deleted within the hour.
+    Nothing else is lost.</p>
+    <p class="note"><strong>Referrals:</strong> <code>/coppice premium</code> shows your Discord's code. When
+    another community enters it with <code>/coppice redeem</code> within 14 days of adding Coppice, and Coppice is still
+    watching a server there 14 days later, both Discords get 30 days of Premium.
+    <a href="terms/#referrals">Referral rules</a>.</p>
     <div class="actions"><a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add Coppice to Discord</a></div>
   </div>
 </section>
@@ -177,10 +225,20 @@
   <div class="wrap split">
     <div><h2 id="help-h">Before you add it</h2></div>
     <dl class="qa">
+      <div><dt>Will it work with my server?</dt><dd>Almost certainly, if players join by address. Realms can't be checked.
+        <a href="#works">The details</a>.</dd></div>
       <div><dt>Can it be wrong?</dt><dd>Yes. If the network between Coppice and your server has trouble, or Discord is down,
-        an alert can be late, missed or false. The second check is there to stop one-off false alarms. Don't rely on it alone for anything critical.</dd></div>
+        an alert can be late, missed or false. The second check is there to stop one-off false alarms. Don't rely on it alone for anything critical.
+        <a href="status/">What is and isn't watched</a>.</dd></div>
+
+      <div><dt>Why does the card say "Status as of 2 minutes ago"?</dt><dd>Each card says when its status is from.
+        When Discord is busy, Coppice sends alerts first and redraws cards after, so a quiet card can lag a minute
+        or more behind the checks.</dd></div>
       <div><dt>What does it see?</dt><dd>What any player sees on the multiplayer screen: online or not, player count, version,
         message of the day and ping. Player names only if your server shares them.</dd></div>
+      <div><dt>Is AI involved?</dt><dd>In building and running it, yes. Coppice's code, this site and many support replies
+        are written with AI tools. A person owns Coppice and is accountable for it. The bot itself
+        uses no AI: checks, cards and alerts are ordinary code. <a href="privacy/#ai">More in Privacy</a>.</dd></div>
       <div><dt>Where do I get help?</dt><dd>Ask in the <a href="https://discord.gg/HShS7neASg">Coppice Support server</a> on Discord, run <code>/coppice help</code>, or email <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</dd></div>
     </dl>
   </div>
@@ -188,8 +246,10 @@
 
 </main>
 <footer class="wrap">
-  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="terms/">Terms</a> · <a href="privacy/">Privacy</a></p>
-  <p>Run by Matt H., Georgia, USA.</p>
+  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="commands/">Commands</a> · <a href="status/">Status</a> · <a href="terms/">Terms</a> · <a href="privacy/">Privacy</a></p>
+
+  <p>Coppice is run from Georgia, USA. Contact: <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+  <p>Built and run with AI assistance. A person owns Coppice and is accountable for it. <a href="privacy/#ai">How AI is used</a>.</p>
   <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
 </footer>
 <script>

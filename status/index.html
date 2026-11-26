@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coppice status: what is and isn't watched</title>
+<meta name="description" content="What Coppice watches, what it doesn't, and how Coppice itself is kept running.">
+<meta name="theme-color" content="#111511">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="preload" href="../fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top wrap">
+  <a class="mark" href="../">Coppice</a>
+  <nav aria-label="Sections"><a href="../#outage">How it works</a><a href="../#pricing">Pricing</a><a href="../commands/">Commands</a><a href="../#help">Help</a></nav>
+  <a class="small-add" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add to Discord</a>
+</header>
+<main>
+<article class="legal wrap">
+<h1>Status: what is and isn't watched</h1>
+<p>Coppice has no public uptime history yet. When it does, it will be linked
+here. Until then, this page says plainly what Coppice watches and what it
+doesn't. Problems with Coppice itself are posted in the
+<a href="https://discord.gg/HShS7neASg">Coppice Support server</a>.</p>
+
+<h2>What Coppice watches</h2>
+<ul>
+
+<li>Each Minecraft server you add, on a repeating schedule: online or not, player
+  count, version, message of the day and ping. Each card says when its status is from.</li>
+<li>An offline alert needs two failed checks in a row, so one dropped answer doesn't page you.</li>
+<li>Checks come from one place: a server in New York, USA (DigitalOcean NYC3).</li>
+</ul>
+
+<h2>What it doesn't watch</h2>
+<ul>
+<li>Whether players can actually join and play. Coppice asks the same question the
+  multiplayer screen asks. A server can answer that and still be lagging, full or
+  broken in game.</li>
+<li>Lag inside the game (TPS), plugins, mods or the server's console.</li>
+<li>Reachability from anywhere but New York. A network problem near your players
+  won't show; one near New York can look like an outage.</li>
+<li>Realms. A Realm has no public address to check.</li>
+<li>Your Discord. If Discord is down, cards and alerts wait for it. An alert that
+  can't be sent within an hour is dropped.</li>
+</ul>
+
+<h2>How Coppice itself is kept running</h2>
+<ul>
+<li>The bot runs on one server and restarts by itself if it stops.</li>
+
+<li>It keeps timing its own checks and raises a flag if they run late.</li>
+<li>The database is backed up every night and kept 14 days.</li>
+<li>If something goes wrong that affects your data, we'll say so on coppicebot.com.</li>
+</ul>
+</article>
+</main>
+<footer class="wrap">
+  <p><a href="https://discord.gg/HShS7neASg">Support server</a> · <a href="mailto:support@coppicebot.com">support@coppicebot.com</a> · <a href="../commands/">Commands</a> · <a href="../status/">Status</a> · <a href="../terms/">Terms</a> · <a href="../privacy/">Privacy</a></p>
+
+  <p>Coppice is run from Georgia, USA. Contact: <a href="mailto:support@coppicebot.com">support@coppicebot.com</a>.</p>
+  <p>Built and run with AI assistance. A person owns Coppice and is accountable for it. <a href="../privacy/#ai">How AI is used</a>.</p>
+  <p class="fine">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+</footer>
+</body>
+</html>
