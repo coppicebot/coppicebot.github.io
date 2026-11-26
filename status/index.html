@@ -27,9 +27,9 @@ doesn't. Problems with Coppice itself are posted in the
 
 <h2>What Coppice watches</h2>
 <ul>
+<li>Each Minecraft server you add, every 60 seconds: online or not, player count,
+  version, message of the day and ping.</li>
 
-<li>Each Minecraft server you add, on a repeating schedule: online or not, player
-  count, version, message of the day and ping. Each card says when its status is from.</li>
 <li>An offline alert needs two failed checks in a row, so one dropped answer doesn't page you.</li>
 <li>Checks come from one place: a server in New York, USA (DigitalOcean NYC3).</li>
 </ul>
@@ -50,8 +50,9 @@ doesn't. Problems with Coppice itself are posted in the
 <h2>How Coppice itself is kept running</h2>
 <ul>
 <li>The bot runs on one server and restarts by itself if it stops.</li>
+<li>It times its own checks every minute and raises a flag if they run late
+  (past 62 seconds apart).</li>
 
-<li>It keeps timing its own checks and raises a flag if they run late.</li>
 <li>The database is backed up every night and kept 14 days.</li>
 <li>If something goes wrong that affects your data, we'll say so on coppicebot.com.</li>
 </ul>

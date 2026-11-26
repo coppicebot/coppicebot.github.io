@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coppice: Minecraft server alerts for Discord</title>
+<meta name="description" content="A Discord bot that checks your Minecraft server every minute and posts one alert when it goes down. Free for up to 10 servers per Discord.">
 
-<meta name="description" content="A Discord bot that keeps checking your Minecraft server and posts one alert when it goes down. Free for up to 10 servers per Discord.">
 <meta name="theme-color" content="#111511">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Coppice">
@@ -30,10 +30,10 @@
 <section class="hero wrap">
   <div>
     <h1>Know your Minecraft server is down before your players tell you.</h1>
-
-    <p class="lede">Coppice is a Discord bot that <strong>keeps checking your server</strong>.
+    <p class="lede">Coppice is a Discord bot that checks your server <strong>every minute</strong>.
     If the server fails to answer twice in a row, it posts <strong>one alert</strong> and pings the role
     you pick. Between outages, a status card in your channel shows players, version and ping.</p>
+
     <p class="offer">Free for up to 10 Minecraft servers per Discord. Java and Bedrock.</p>
     <div class="actions">
       <a class="button" href="https://discord.com/oauth2/authorize?client_id=1570571016768589925&permissions=117760&integration_type=0&scope=bot+applications.commands">Add Coppice to Discord</a>
@@ -58,8 +58,8 @@
             <div><dt>Version</dt><dd>1.21.4</dd></div>
             <div><dt>Ping</dt><dd>38 ms</dd></div>
           </dl>
+          <p class="e-foot">Coppice · Minecraft Java · checked every 60 s</p>
 
-          <p class="e-foot">Coppice · Minecraft Java</p>
         </div>
         <span class="edited">(edited)</span>
       </div>
@@ -102,16 +102,16 @@
       anything. Here is the example outage, check by check.</p>
     </div>
     <div>
-
       <ol class="timeline">
-        <li><span class="t">Check</span><span class="what">The server answers.</span><span class="why">The card shows 14 players and 38 ms.</span></li>
-        <li><span class="t">Next check</span><span class="what">No answer.</span><span class="why">Nothing is posted yet. One miss on its own never alerts.</span></li>
-        <li class="key"><span class="t">Re-check, soon after</span><span class="what">Still no answer.</span><span class="why">That's two in a row. The alert goes to your alert channel, your role is pinged if you picked one, and the card turns to Offline.</span></li>
-        <li><span class="t">While it's down</span><span class="what">Checks carry on.</span><span class="why">One alert is enough. The card keeps count of how long it's been down.</span></li>
-        <li class="key"><span class="t">Back up</span><span class="what">The server answers again.</span><span class="why">You get a back-online message with how long it was down, and the card turns green.</span></li>
+        <li><span class="t">9:50:00 PM</span><span class="what">Check. The server answers.</span><span class="why">The card shows 14 players and 38 ms.</span></li>
+        <li><span class="t">9:51:00 PM</span><span class="what">Check. No answer.</span><span class="why">Nothing is posted yet. One miss on its own never alerts.</span></li>
+        <li class="key"><span class="t">9:51:20 PM</span><span class="what">Second check, 20 seconds later. Still no answer.</span><span class="why">That's two in a row. The alert goes to your alert channel, your role is pinged if you picked one, and the card turns to Offline.</span></li>
+        <li><span class="t">9:52 to 10:38 PM</span><span class="what">Checked every minute while it's down.</span><span class="why">One alert is enough. The card keeps count of how long it's been down.</span></li>
+        <li class="key"><span class="t">10:39:00 PM</span><span class="what">The server answers again.</span><span class="why">You get a back-online message with how long it was down, and the card turns green.</span></li>
       </ol>
-      <p class="note">This is the order things happen in. Every card says when its status is from.
-      How fast an alert reaches you also depends on your server's network and on Discord.</p>
+      <p class="note">These times show how the checks are spaced. How fast an alert reaches you also
+      depends on your server's network and on Discord.</p>
+
     </div>
   </div>
 </section>
@@ -202,8 +202,8 @@
       <thead><tr><th scope="col"><span class="visually-hidden">Feature</span></th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead>
       <tbody>
         <tr><th scope="row">Servers</th><td>10</td><td>25</td></tr>
+        <tr><th scope="row">Checks and alerts</th><td>Every 60 s</td><td>Every 60 s</td></tr>
 
-        <tr><th scope="row">Checks and alerts</th><td>Included</td><td>The same as Free</td></tr>
         <tr><th scope="row">Graphs</th><td>24 hours, 7 days, 30 days</td><td>Adds 90 days</td></tr>
         <tr><th scope="row">Quiet hours</th><td>Yes</td><td>Yes</td></tr>
         <tr><th scope="row">Patch notes</th><td>1 channel</td><td>5 channels, plus snapshots</td></tr>
@@ -230,10 +230,10 @@
       <div><dt>Can it be wrong?</dt><dd>Yes. If the network between Coppice and your server has trouble, or Discord is down,
         an alert can be late, missed or false. The second check is there to stop one-off false alarms. Don't rely on it alone for anything critical.
         <a href="status/">What is and isn't watched</a>.</dd></div>
-
       <div><dt>Why does the card say "Status as of 2 minutes ago"?</dt><dd>Each card says when its status is from.
         When Discord is busy, Coppice sends alerts first and redraws cards after, so a quiet card can lag a minute
-        or more behind the checks.</dd></div>
+        or more behind the checks. The checks themselves still run every 60 seconds.</dd></div>
+
       <div><dt>What does it see?</dt><dd>What any player sees on the multiplayer screen: online or not, player count, version,
         message of the day and ping. Player names only if your server shares them.</dd></div>
       <div><dt>Is AI involved?</dt><dd>In building and running it, yes. Coppice's code, this site and many support replies
